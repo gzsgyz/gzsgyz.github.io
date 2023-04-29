@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>摇号|2.0</title>
+</head>
+<link rel="stylesheet" href="layui/css/layui.css">
+<script src="layui/layui.js"></script>
+<script src="main.js"></script>
+<script src="wow/wow.js"></script>
+
+<link rel="stylesheet" href="/wow/animate.css">
+<script>
+    
+    new WOW().init();
+    
+</script>
+<style>
+    .parent {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+    }
+
+
+    .div1 {
+        grid-area: 1 / 1 / 2 / 6;
+    }
+
+    .div2 {
+        grid-area: 2 / 1 / 6 / 6;
+    }
+
+    .div3 {
+        grid-area: 2 / 2 / 4 / 4;
+        
+    }
+
+    .div4 {
+        grid-area: 2 / 4 / 4 / 5;
+    }
+</style>
+
+<body onload="load()">
+    <div class="parent">
+        <div class="div1">
+            <ul class="layui-nav layui-bg-cyan" id="dhl">
+                <!-- //导航栏 -->
+                <li class="layui-nav-item">
+                    <a href="">摇号系统2.0</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="index.html">首页</a>
+                </li>
+
+            </ul>
+
+        </div>
+        <div class="div2"> </div>
+        <div class="div3  wow bounceInUp center " style="border-radius: 16px;
+        
+        text-align:center;
+        background: #ffffff;height:350px;
+        box-shadow:  25px 25px 49px #d9d9d9,
+                     -25px -25px 49px #ffffff;">
+            <div style="margin-top: 70px;"><span id="name" style="font-size: 50px;">名字</span></div>
+            <div style="margin-top: 100px;">
+                <button class="layui-btn" style="width: 100px;" id="bt" onclick="goAndStop()">摇</button>
+
+            </div>
+        </div>
+        <div class="div4  wow bounceInRight center" style="border-radius: 16px;margin-left: 10px;
+                            background: #ffffff;
+                            box-shadow:  25px 25px 49px #d9d9d9,
+                            -25px -25px 49px #ffffff;">
+            <div class="layui-form-label">奖池</div>
+            <form class="layui-form" action="" onsubmit="return false">
+                <div class="layui-form-item layui-form-text ">
+                    <textarea name="w3mjc" placeholder="奖池名单" class="layui-textarea layui-disabled"
+                        id="jcmd"></textarea>
+                </div>
+            </form>
+            <hr>
+            <div style="text-align: center;">
+                <span class="layui-btn" style="margin-top: 5px;" onclick="layer.open({
+                    type: 2, 
+                    area: ['500px', '300px'],
+                    content: 'xzxysj.html',
+                    cancel:function(index, layero){ 
+                            layer.msg('你关闭了一个框框！')
+                            layer.close(index)
+                  }}); ">现有数据</span>
+
+                <span class="layui-btn" style="margin-top: 5px;" onclick="
+                if (prompt('管理员密码')==localStorage.getItem('adminkey')){
+                    layer.open({
+                    type: 2, 
+                    area: ['500px', '300px'],
+                    content: 'zdy.html',
+                    cancel:function(index, layero){ 
+                            layer.msg('你关闭了一个框框！')
+                            layer.close(index)
+                  }}); 
+                }
+                else{
+                    alert('错误')
+                }
+                
+                
+               ">自定义数据</span>
+
+            </div>
+            <hr>
+            <div style="text-align: center;">
+                <span style="font-size: 20px;margin-top: auto;">现在时间</span>
+                <div id="nd" style="font-size: 10px;"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

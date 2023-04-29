@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <title>Document</title>
+ <style>
+ #box{
+  width:200px;
+  height: 300px;
+  margin: 100px auto;
+ }
+
+ #stuName{
+  width: 100%;
+  height: 80px;
+  border: 2px solid gray;
+  line-height: 80px;
+  text-align: center;
+  font-size: 30px;
+  color:orange;
+  font-weight: bold;
+ }
+
+ input{
+  margin-top:30px;
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+  font-weight: bold;
+ }
+
+ </style>
+</head>
+<body>
+ <div id="box">
+  <div id="stuName">
+   随机名单
+  </div>
+  <input id="btn" type="button" value="开 始" onclick="goAndStop()">
+ </div>
+</body>
+</html>
+<script> arr = ["唐僧", "孙悟空", "猪八戒", "沙悟净", "白骨精", "玉皇大帝", "红孩儿", "白骨精", "太上老君"]
+
+var myTimer = null 
+function goAndStop(){
+ if(myTimer == null){
+  myTimer = setInterval(function(){
+   var index = parseInt(Math.random()*arr.length)
+
+   document.getElementById("stuName").innerHTML = arr[index]
+
+  },10);
+  document.getElementById("btn").value = "停 止"
+ }else{
+  window.clearInterval(myTimer)
+  myTimer = null
+  document.getElementById("btn").value = "开 始"
+ }
+}
+</script>
